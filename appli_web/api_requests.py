@@ -1,20 +1,18 @@
 import pandas as pd
+import requests
 
 
 def first_request():
-    req = pd.read_excel(
-        'https://static.data.gouv.fr/resources/arretes-de-catastrophe-naturelle-en-france-metropolitaine-2/20160101-200656/Arretes_de_catastrophe_naturelles.xlsx'
-    ).to_json(
-        orient='records'
-    )
-    print(req)
+    req = requests.get(
+        'https://odre.opendatasoft.com/api/records/1.0/search/?dataset=temperature-quotidienne-departementale&q=&facet=date_obs&facet=departement&refine.date_obs=2023'
+    ).json()
+    print("Première Requête !")
     return req
 
 
-first_request()
-
-
 def second_request():
-    req = pd.read_xml('https://georisques.gouv.fr/services').to_json(orient='records')
+    req = requests.get(
+        'https://odre.opendatasoft.com/api/records/1.0/search/?dataset=prod-nat-gaz-horaire-prov&q=&facet=journee_gaziere&facet=operateur'
+    ).json()
     print("Deuxième requête !")
     return req
