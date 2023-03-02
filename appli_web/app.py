@@ -18,8 +18,19 @@ def close_connection(exception):
 
 @app.route('/')
 def show_accueil():
-    req = api_requests.request_countries()
-    return render_template('index.html', req=req)
+    return render_template('index.html')
+
+
+@app.route('/first_request')
+def first_request():
+    req = api_requests.first_request()
+    return render_template('first_request.html', req=req)
+
+
+@app.route('/second_request')
+def second_request():
+    req = api_requests.second_request()
+    return render_template('second_request.html', req=req)
 
 
 if __name__ == '__main__':
