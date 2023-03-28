@@ -1,17 +1,20 @@
-import matplotlib.pyplot as plt
-from bokeh.io import output_notebook, output_file
-
-output_notebook()
+from bokeh.plotting import figure
+from bokeh.embed import components
 from appli_web.data.data_cleaning import df
 
 
-def graphique_barres_empilees():
+def graph():
     consommation_par_annee_filiere = df.groupby(["annee", "filiere"])["consommation"].sum()
-    consommation_par_annee_filiere.unstack().plot(kind="bar", stacked=False)
-    plt.xlabel("Année")
-    plt.ylabel("Consommation")
-    plt.title("Consommation d'électricité, d'eau ou de gaz par année et filière")
-    output_file("templates/consommation_par_annee_filiere.html")
 
+    p = figure(x_axis_label="Année", y_axis_label="Consommation", title="Consommation d'électricité, d'eau ou de gaz par année et filière")
+    p.vbar(x=consommation_par_annee_filiere.index, top=consommation_par_annee_filiere.values, width=0.9)
 
-graphique_barres_empilees()
+    script, div = components(p)
+
+    with open("../templates/graph.html", "w") as f:
+        f.write(script)
+        f.write(div)
+
+    print("graph.html created")
+
+graph()

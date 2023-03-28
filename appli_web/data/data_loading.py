@@ -3,14 +3,14 @@ import requests
 
 # Récupération des données locales depuis le dossier json_csv_files
 
-elec_et_gaz = pd.read_json('json_csv_files/conso-elec-gaz-annuelle-par-naf-agregee-departement.json')
-eau2015 = pd.read_csv('json_csv_files/eau2015.csv', low_memory=False)
-eau2016 = pd.read_csv('json_csv_files/eau2016.csv', low_memory=False)
-eau2017 = pd.read_csv('json_csv_files/eau2017.csv', low_memory=False)
-eau2018 = pd.read_csv('json_csv_files/eau2018.csv', low_memory=False)
-eau2019 = pd.read_csv('json_csv_files/eau2019.csv', low_memory=False)
-eau2020 = pd.read_csv('json_csv_files/eau2020.csv', low_memory=False)
-eau2021 = pd.read_csv('json_csv_files/eau2021.csv', low_memory=False)
+elec_et_gaz = pd.read_json('../json_csv_files/conso-elec-gaz-annuelle-par-naf-agregee-departement.json')
+eau2015 = pd.read_csv('../json_csv_files/eau2015.csv', low_memory=False)
+eau2016 = pd.read_csv('../json_csv_files/eau2016.csv', low_memory=False)
+eau2017 = pd.read_csv('../json_csv_files/eau2017.csv', low_memory=False)
+eau2018 = pd.read_csv('../json_csv_files/eau2018.csv', low_memory=False)
+eau2019 = pd.read_csv('../json_csv_files/eau2019.csv', low_memory=False)
+eau2020 = pd.read_csv('../json_csv_files/eau2020.csv', low_memory=False)
+eau2021 = pd.read_csv('../json_csv_files/eau2021.csv', low_memory=False)
 
 # Récupération des données de l'API
 

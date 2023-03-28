@@ -22,8 +22,8 @@ def show_accueil():
 
 @app.route('/test')
 def show_test():
-    graph.graphique_barres_empilees()
-    return render_template('consommation_par_annee_filiere.html')
+    graph.graph()
+    return render_template('graph.html')
 
 
 if __name__ == '__main__':
