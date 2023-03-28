@@ -1,9 +1,9 @@
 #! /usr/bin/python
 # -*- coding:utf-8 -*-
 
-from flask import Flask, request, render_template, redirect, url_for, abort, flash, session, g
+from flask import Flask, render_template, redirect, url_for, abort, flash, session, g
 from flask import Blueprint
-import api_requests
+import data.data_graph_making as graph
 
 app = Flask(__name__)
 app.secret_key = 'une cle(token) : grain de sel(any random string)'
@@ -18,20 +18,12 @@ def close_connection(exception):
 
 @app.route('/')
 def show_accueil():
-    return render_template('index.html')
+    return render_template('layout.html')
 
-
-@app.route('/first_request')
-def first_request():
-    req = api_requests.first_request()
-    return render_template('first_request.html', req=req)
-
-
-@app.route('/second_request')
-def second_request():
-    req = api_requests.second_request()
-    req = req['records'][0]
-    return render_template('second_request.html', req=req)
+@app.route('/test')
+def show_test():
+    graph.graphique_barres_empilees()
+    return render_template('consommation_par_annee_filiere.html')
 
 
 if __name__ == '__main__':
