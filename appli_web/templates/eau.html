@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <h1>Consommation d'eau en France entre 2015 et 2021</h1>
+        <div class="col-6">
+            {% include "consommation_eau.html" %}
+        </div>
+        <div class="col-6">
+            <h1>Observation du graphique</h1>
+            <p>On peut voir qu'en 2021 il y a une chute de la consommation, <br>
+            c'est dû au fait que toutes les données n'ont pas encore été publiées.<br>
+            Il n'y également pas de données pour 2022 et 2023.<br>
+            <br>
+            On remarque également que la consommation est en 10⁸, ce qui correspond à <br>
+            une consommation en MWh (10⁸ = 1000 MWh)</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

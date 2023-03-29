@@ -47,6 +47,7 @@ DEPS_TO_REGS = {
     ('976', '976D'): 'Mayotte'
 }
 
+
 def dep_to_reg(num_departement) -> str:
     for liste_num_departements, nom_region in DEPS_TO_REGS.items():
         if str(num_departement) in liste_num_departements:
