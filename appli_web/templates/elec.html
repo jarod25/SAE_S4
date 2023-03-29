@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container mt-3">
+    <div class="row">
+        <h1>Consommation d'électricité en France entre 2014 et 2023</h1>
+        <div class="col-6">
+            {% include "consommation_elec.html" %}
+        </div>
+        <div class="col-6">
+            <h1>Observation du graphique</h1>
+            <p>On peut voir qu'en 2022 et 2023 il y a une chute de la consommation, <br>
+            c'est dû au fait que toutes les données n'ont pas encore été publiées.<br>
+            <br>
+            On remarque également que la consommation est en 10⁸, ce qui correspond à <br>
+            une consommation en MWh (10⁸ = 1000 MWh)</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
