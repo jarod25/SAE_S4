@@ -1,14 +1,14 @@
+import pandas as pd
 from bokeh.plotting import figure, output_file, save
-from bokeh.models import ColumnDataSource, HoverTool
-from bokeh.palettes import Category10_10
+from bokeh.models import ColumnDataSource
+from bokeh.layouts import gridplot
+from bokeh.palettes import Category10
+from bokeh.transform import cumsum
+from math import pi
+
 from appli_web.data.data_cleaning import df
 
 
-def graph():
-    fig = figure(title='test', x_axis_label='annee', y_axis_label='consommation')
-    fig.line(df['annee'], df['consommation'], line_width=2)
-    output_file('templates/graph.html')
-    save(fig)
 
 def graph_elec_consommation():
     consommation_elec = df[df["filiere"] == "Electricité"].groupby("annee")["consommation"].sum()
@@ -32,22 +32,40 @@ def graph_eau_consommation():
     save(fig)
 
 def graph_top10():
-    # Génère moi un graphique des 10 régions qui consommes le plus au total (tous les années confondues) avec Bokeh
-    # 1. On récupère les 10 régions qui consomment le plus
-    top10 = df.groupby("libelle_region")["consommation"].sum().sort_values(ascending=False).head(10)
-    # 2. On récupère les données de consommation de ces 10 régions
-    top10_data = df[df["libelle_region"].isin(top10.index)]
-    # 3. On crée un graphique avec Bokeh
-    fig = figure(x_axis_label='annee', y_axis_label='consommation', title="Top 10 des régions qui consomment le plus")
-    # 4. On crée une palette de couleur
-    palette = Category10_10
-    # 5. On crée une source de données
-    source = ColumnDataSource(top10_data)
-    # 6. On crée une boucle pour afficher les 10 régions
-    for i, region in enumerate(top10.index):
-        fig.line(x="annee", y="consommation", source=source, color=palette[i], legend_label=region)
-    # 7. On ajoute un outil pour afficher les données au survol de la souris
-    fig.add_tools(HoverTool(tooltips=[("Région", "@libelle_region"), ("Année", "@annee"), ("Consommation", "@consommation")]))
-    # 8. On sauvegarde le graphique
-    output_file('templates/consommation_top10.html')
-    save(fig)
+
+    top10 = df.groupby("libelle_region")["consommation"].sum()
+    df_top10 = df[df["libelle_region"].isin(top10.index)]
+
+    df_elec = df_top10[df_top10['filiere'] == 'Electricité'].groupby('libelle_region').sum(numeric_only=True).sort_values(by='consommation', ascending=False)[:10]
+    source_elec = ColumnDataSource(df_elec)
+    p_elec = figure(y_range=df_elec.index.tolist()[::-1], width=400, height=400, title="Electricité")
+    p_elec.hbar(y='libelle_region', right='consommation', height=0.8, source=source_elec)
+
+    df_eau = df_top10[df_top10['filiere'] == 'Eau'].groupby('libelle_region').sum(numeric_only=True).sort_values(by='consommation', ascending=False)[:10]
+    source_eau = ColumnDataSource(df_eau)
+    p_eau = figure(y_range=df_eau.index.tolist()[::-1], width=400, height=400, title="Eau")
+    p_eau.hbar(y='libelle_region', right='consommation', height=0.8, source=source_eau)
+
+    df_gaz = df_top10[df_top10['filiere'] == 'Gaz'].groupby('libelle_region').sum(numeric_only=True).sort_values(by='consommation', ascending=False)[:10]
+    source_gaz = ColumnDataSource(df_gaz)
+    p_gaz = figure(y_range=df_gaz.index.tolist()[::-1], width=400, height=400, title="Gaz")
+    p_gaz.hbar(y='libelle_region', right='consommation', height=0.8, source=source_gaz)
+
+    grid = gridplot([[p_elec, p_eau, p_gaz]])
+    output_file("templates/consommation_top10.html")
+    save(grid)
+
+
+def graph_camembert_consomation_totale():
+    consommation_totale = df.groupby("filiere")["consommation"].sum()
+    source = pd.DataFrame({'filiere': consommation_totale.index, 'consommation': consommation_totale.values})
+    graph = figure(height=500, width=500, title='Répartition de la consommation d\'énergie en France',
+                   toolbar_location=None,
+                   tools="hover", tooltips="@filiere: @consommation_par_filiere")
+    graph.wedge(x=0, y=1, radius=0.4, start_angle=cumsum('angles', include_zero=True), end_angle=cumsum('angles'),
+                    legend_field='filiere', source=source)
+    graph.axis.axis_label = None
+    graph.axis.visible = False
+    graph.grid.grid_line_color = None
+    output_file("templates/consommation_camembert.html")
+    save(graph)
