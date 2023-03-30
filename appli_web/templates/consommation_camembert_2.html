@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bokeh Plot</title>
+    <style>
+      html, body {
+        box-sizing: border-box;
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-3.1.0.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+  </head>
+  <body>
+    <div id="83879d0f-da61-44ed-a18a-0ba2c584853f" data-root-id="p1116" style="display: contents;"></div>
+  
+    <script type="application/json" id="p1230">
+      {"fb497098-77f1-49cd-b186-ecaad7136148":{"version":"3.1.0","title":"Bokeh Application","defs":[],"roots":[{"type":"object","name":"Figure","id":"p1116","attributes":{"height":350,"x_range":{"type":"object","name":"Range1d","id":"p1126","attributes":{"start":-0.5}},"y_range":{"type":"object","name":"DataRange1d","id":"p1118"},"x_scale":{"type":"object","name":"LinearScale","id":"p1130"},"y_scale":{"type":"object","name":"LinearScale","id":"p1132"},"title":{"type":"object","name":"Title","id":"p1119","attributes":{"text":"Consommation totale par fili\u00e8re"}},"renderers":[{"type":"object","name":"GlyphRenderer","id":"p1162","attributes":{"data_source":{"type":"object","name":"ColumnDataSource","id":"p1153","attributes":{"selected":{"type":"object","name":"Selection","id":"p1154","attributes":{"indices":[],"line_indices":[]}},"selection_policy":{"type":"object","name":"UnionRenderers","id":"p1155"},"data":{"type":"map","entries":[["index",{"type":"ndarray","array":{"type":"bytes","data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAA"},"shape":[48],"dtype":"int32","order":"little"}],["libelle_region",{"type":"ndarray","array":["Auvergne-Rh\u00f4ne-Alpes","Auvergne-Rh\u00f4ne-Alpes","Auvergne-Rh\u00f4ne-Alpes","Bourgogne-Franche-Comt\u00e9","Bourgogne-Franche-Comt\u00e9","Bourgogne-Franche-Comt\u00e9","Bretagne","Bretagne","Bretagne","Centre-Val de Loire","Centre-Val de Loire","Centre-Val de Loire","Corse","Corse","Grand Est","Grand Est","Grand Est","Guadeloupe","Guadeloupe","Guyane","Guyane","Hauts-de-France","Hauts-de-France","Hauts-de-France","La R\u00e9union","La R\u00e9union","Martinique","Martinique","Mayotte","Mayotte","Normandie","Normandie","Normandie","Nouvelle-Aquitaine","Nouvelle-Aquitaine","Nouvelle-Aquitaine","Occitanie","Occitanie","Occitanie","Pays de la Loire","Pays de la Loire","Pays de la Loire","Provence-Alpes-C\u00f4te d'Azur","Provence-Alpes-C\u00f4te d'Azur","Provence-Alpes-C\u00f4te d'Azur","\u00cele-de-France","\u00cele-de-France","\u00cele-de-France"],"shape":[48],"dtype":"object","order":"little"}],["filiere",{"type":"ndarray","array":["Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Eau","Electricit\u00e9","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Eau","Electricit\u00e9","Eau","Electricit\u00e9","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz","Eau","Electricit\u00e9","Gaz"],"shape":[48],"dtype":"object","order":"little"}],["value",{"type":"ndarray","array":{"type":"bytes","data":"V89BNwyw40G7h0PLy029QTgyf6PvNrhBeNaWEjblsEEmEj6NdYOiQbKCl4dbf6JBhGSBz4EsZ0GSmhnk5RykQU576jBaOZ5B0O2lOENaeEGWHN/T/DCgQaLrEjKiN55BTmIQAI2YVkHXo3DtALxtQWDIesKhbZ9BgnvOI2XZs0E4n+bUS8bAQXy45PgySCJBrBxa8IjEZkGjkjqhTiAAQaabxHC9w1hBm3IFrUUfekGG8p4TVKi1QSwQuyaZXcBBqwmisv48NEHdJAa7CZN0QYLK+Iel8RRBlBgEajNNZUGHUKXmtI/sQFSu8C6l9kBBEk7LSjnXrEGRKU4tSTaoQUMgl932/7RBz6ABMM5zoEFzph0O9vOxQYYpGA0VSKpBcm1AXiZVs0E3jS06bdWwQaxpIBLETqJBkbhH735deUHjLRjxdWanQcjS5+46daVBH0vlkAX9y0EFsX3yY4yxQXuFnT7Fn7JBETtzNqrfnEH1+2M7z8a/QX9NdN4gasFB"},"shape":[48],"dtype":"float64","order":"little"}],["angle",{"type":"ndarray","array":{"type":"bytes","data":"A/Kx93nP9T9JotjvUzvQP8UmjpFR08o/7gDJkpC3wj9W+H9ReoK0P+NCphTvfbQ/PsRupCmseT8ZF+wtEEi2P/HsIxrOvbA/pCnmP3T6ij/I6Ea26O+xP8MsPWLavLA/4eGT30AIaT/o4/qAX3iAP7C/UoaQaLE/mzFDLkj9xT8ZLYUAUZXSP0l9ugPUQDQ/yrTz4fo4eT/qlaMXbt0RP4J64+dNb2s/KzXw4k7wjD9HuVE4If7HP/bRPmZUIdI/iCWY8J5rRj+pQm/58MqGP2kHojTAMyc/IqgSNi2Zdz9NpCoLEqT/PpcFAejgylI/EQ8VfEzzvz9hS5womdK6Pyhzhr6cQ8c/7AuMaO45sj8X0AjsgePDPypGWLiEHb0/+KN7HcdqxT9IlBIJFKbCP5X+bV8aSLQ/lYrAcKMZjD+qq9hvXey5Pz6kxaOFxbc/9f7s15EB3z/lxJ0BxXDDPxe8E3nXocQ/tet5Zqb8rz8lo6gF9pnRP4b6LTbQStM/"},"shape":[48],"dtype":"float64","order":"little"}],["color",{"type":"ndarray","array":[{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},["#1f77b4","#ff7f0e","#2ca02c"],["#1f77b4","#ff7f0e","#2ca02c","#d62728"],["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd"],["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b"],["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2"],["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f"],["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22"],["#1f77b4","#ff7f0e","#2ca02c","#d62728","#9467bd","#8c564b","#e377c2","#7f7f7f","#bcbd22","#17becf"],{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"},{"type":"number","value":"nan"}],"shape":[48],"dtype":"object","order":"little"}]]}}},"view":{"type":"object","name":"CDSView","id":"p1163","attributes":{"filter":{"type":"object","name":"AllIndices","id":"p1164"}}},"glyph":{"type":"object","name":"Wedge","id":"p1159","attributes":{"x":{"type":"value","value":0},"y":{"type":"value","value":1},"radius":{"type":"value","value":0.4},"start_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1151","attributes":{"field":"angle","include_zero":true}}},"end_angle":{"type":"expr","expr":{"type":"object","name":"CumSum","id":"p1152","attributes":{"field":"angle"}}},"line_color":{"type":"value","value":"white"},"fill_color":{"type":"field","field":"color"}}},"nonselection_glyph":{"type":"object","name":"Wedge","id":"p1160","attributes":{"x":{"type":"value","value":0},"y":{"type":"value","value":1},"radius":{"type":"value","value":0.4},"start_angle":{"type":"expr","expr":{"id":"p1151"}},"end_angle":{"type":"expr","expr":{"id":"p1152"}},"line_color":{"type":"value","value":"white"},"line_alpha":{"type":"value","value":0.1},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.1},"hatch_alpha":{"type":"value","value":0.1}}},"muted_glyph":{"type":"object","name":"Wedge","id":"p1161","attributes":{"x":{"type":"value","value":0},"y":{"type":"value","value":1},"radius":{"type":"value","value":0.4},"start_angle":{"type":"expr","expr":{"id":"p1151"}},"end_angle":{"type":"expr","expr":{"id":"p1152"}},"line_color":{"type":"value","value":"white"},"line_alpha":{"type":"value","value":0.2},"fill_color":{"type":"field","field":"color"},"fill_alpha":{"type":"value","value":0.2},"hatch_alpha":{"type":"value","value":0.2}}}}}],"toolbar":{"type":"object","name":"Toolbar","id":"p1125","attributes":{"tools":[{"type":"object","name":"HoverTool","id":"p1148","attributes":{"renderers":"auto","tooltips":"@filiere: @value"}}]}},"toolbar_location":null,"left":[{"type":"object","name":"LinearAxis","id":"p1141","attributes":{"visible":false,"ticker":{"type":"object","name":"BasicTicker","id":"p1143","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1142"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1144"}}}],"below":[{"type":"object","name":"LinearAxis","id":"p1134","attributes":{"visible":false,"ticker":{"type":"object","name":"BasicTicker","id":"p1136","attributes":{"mantissas":[1,2,5]}},"formatter":{"type":"object","name":"BasicTickFormatter","id":"p1135"},"major_label_policy":{"type":"object","name":"AllLabels","id":"p1137"}}}],"center":[{"type":"object","name":"Grid","id":"p1140","attributes":{"axis":{"id":"p1134"},"grid_line_color":null}},{"type":"object","name":"Grid","id":"p1147","attributes":{"dimension":1,"axis":{"id":"p1141"},"grid_line_color":null}},{"type":"object","name":"Legend","id":"p1165","attributes":{"items":[{"type":"object","name":"LegendItem","id":"p1166","attributes":{"label":{"type":"field","field":"filiere"},"renderers":[{"id":"p1162"}]}}]}}]}}],"callbacks":{"type":"map"}}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('p1230').textContent;
+              const render_items = [{"docid":"fb497098-77f1-49cd-b186-ecaad7136148","roots":{"p1116":"83879d0f-da61-44ed-a18a-0ba2c584853f"},"root_ids":["p1116"]}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>

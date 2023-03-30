@@ -1,10 +1,13 @@
 import pandas as pd
 from bokeh.plotting import figure, output_file, save
-from bokeh.models import ColumnDataSource
 from bokeh.layouts import gridplot
 from bokeh.palettes import Category10
 from bokeh.transform import cumsum
 from math import pi
+from bokeh.io import curdoc
+from bokeh.layouts import column, row
+from bokeh.models import ColumnDataSource, Select, Slider
+from bokeh.models.widgets import Tabs, Panel
 
 from appli_web.data.data_cleaning import df
 
@@ -58,14 +61,67 @@ def graph_top10():
 
 def graph_camembert_consomation_totale():
     consommation_totale = df.groupby("filiere")["consommation"].sum()
-    source = pd.DataFrame({'filiere': consommation_totale.index, 'consommation': consommation_totale.values})
-    graph = figure(height=500, width=500, title='Répartition de la consommation d\'énergie en France',
-                   toolbar_location=None,
-                   tools="hover", tooltips="@filiere: @consommation_par_filiere")
-    graph.wedge(x=0, y=1, radius=0.4, start_angle=cumsum('angles', include_zero=True), end_angle=cumsum('angles'),
-                    legend_field='filiere', source=source)
-    graph.axis.axis_label = None
-    graph.axis.visible = False
-    graph.grid.grid_line_color = None
+    data = pd.Series(consommation_totale).reset_index(name='value').rename(columns={'index': 'filiere'})
+    data['angle'] = data['value']/data['value'].sum() * 2*pi
+    data['color'] = Category10[len(data)]
+
+    p = figure(height=350, title="Consommation totale par filière", toolbar_location=None,
+            tools="hover", tooltips="@filiere: @value", x_range=(-0.5, 1.0))
+
+    p.wedge(x=0, y=1, radius=0.4,
+            start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'),
+            line_color="white", fill_color='color', legend_field='filiere', source=data)
+
+    p.axis.axis_label=None
+    p.axis.visible=False
+    p.grid.grid_line_color = None
+
     output_file("templates/consommation_camembert.html")
-    save(graph)
+    save(p)
+
+
+# graphique interactif avec bokeh ou on peut choisir l'année, la filière et la région pour voir la consommation
+def graph_interactif():
+
+    # Create Input controls
+    annee = Slider(title="Année", value=2014, start=2014, end=2023, step=1)
+    filiere = Select(title="Filière", value="Electricité", options=['Electricité', 'Gaz', 'Eau'])
+    region = Select(title="Région", value="Auvergne-Rhône-Alpes", options=df['libelle_region'].unique().tolist())
+
+    # Create Column Data Source that will be used by the plot
+    source = ColumnDataSource(data=dict(x=[], y=[]))
+
+    # Create the figure
+    plot = figure(plot_height=600, plot_width=600, title='Consommation', x_axis_label='Mois', y_axis_label='Consommation')
+    plot.line('x', 'y', source=source, line_width=3, line_alpha=0.6)
+
+    # Define the callback function: update_plot
+    def update_plot(attr, old, new):
+        # Get the current slider values
+        a = annee.value
+        f = filiere.value
+        r = region.value
+
+        # Generate the new curve
+        x = df[(df['annee'] == a) & (df['filiere'] == f) & (df['libelle_region'] == r)].groupby('mois').sum(numeric_only=True).index.tolist()
+        y = df[(df['annee'] == a) & (df['filiere'] == f) & (df['libelle_region'] == r)].groupby('mois').sum(numeric_only=True)['consommation'].tolist()
+
+        new_data = dict(x=x, y=y)
+        source.data = new_data
+
+    # Attach the callback to the 'value' property of slider
+    annee.on_change('value', update_plot)
+    filiere.on_change('value', update_plot)
+    region.on_change('value', update_plot)
+
+    # Create a row layout
+    layout = column(row(annee, filiere, region), plot)
+
+    # Make a tab with the layout
+    tab = Panel(child=layout, title='Consommation')
+
+    # Add the tab to the current document
+    curdoc().add_root(layout)
+
+    output_file("templates/consommation_interactif.html")
+    save(layout)

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Bokeh Plot</title>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.4.3.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-widgets-2.4.3.min.js"></script>
+    <script type="text/javascript">
+        Bokeh.set_log_level("info");
+    </script>
+  </head>
+  <body>
+    <div class="bk-root" id="9ce925f1-4e05-4078-af5f-12877c4b6c40" data-root-id="1046"></div>
+  
+    <script type="application/json" id="1168">
+      {"b4872e11-d1db-4c6f-b4bc-6f3377898b88":{"defs":[],"roots":{"references":[{"attributes":{"bottom_units":"screen","coordinates":null,"fill_alpha":0.5,"fill_color":"lightgrey","group":null,"left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","syncable":false,"top_units":"screen"},"id":"1031","type":"BoxAnnotation"},{"attributes":{"end":2023,"start":2014,"title":"Ann\u00e9e","value":2014},"id":"1002","type":"Slider"},{"attributes":{},"id":"1056","type":"Selection"},{"attributes":{"source":{"id":"1005"}},"id":"1044","type":"CDSView"},{"attributes":{"options":["Bourgogne-Franche-Comt\u00e9","Normandie","Pays de la Loire","Auvergne-Rh\u00f4ne-Alpes","\u00cele-de-France","Nouvelle-Aquitaine","Grand Est","Provence-Alpes-C\u00f4te d'Azur","Occitanie","Hauts-de-France","Bretagne","Centre-Val de Loire","Corse","Martinique","Guyane","La R\u00e9union","Guadeloupe","Mayotte"],"title":"R\u00e9gion","value":"Auvergne-Rh\u00f4ne-Alpes"},"id":"1004","type":"Select"},{"attributes":{"options":["Electricit\u00e9","Gaz","Eau"],"title":"Fili\u00e8re","value":"Electricit\u00e9"},"id":"1003","type":"Select"},{"attributes":{"children":[{"id":"1045"},{"id":"1006"}]},"id":"1046","type":"Column"},{"attributes":{"below":[{"id":"1017"}],"center":[{"id":"1020"},{"id":"1024"}],"left":[{"id":"1021"}],"renderers":[{"id":"1043"}],"title":{"id":"1007"},"toolbar":{"id":"1032"},"x_range":{"id":"1009"},"x_scale":{"id":"1013"},"y_range":{"id":"1011"},"y_scale":{"id":"1015"}},"id":"1006","subtype":"Figure","type":"Plot"},{"attributes":{"children":[{"id":"1002"},{"id":"1003"},{"id":"1004"}]},"id":"1045","type":"Row"},{"attributes":{},"id":"1050","type":"BasicTickFormatter"},{"attributes":{"tools":[{"id":"1025"},{"id":"1026"},{"id":"1027"},{"id":"1028"},{"id":"1029"},{"id":"1030"}]},"id":"1032","type":"Toolbar"},{"attributes":{"data":{"x":[],"y":[]},"selected":{"id":"1056"},"selection_policy":{"id":"1055"}},"id":"1005","type":"ColumnDataSource"},{"attributes":{},"id":"1011","type":"DataRange1d"},{"attributes":{},"id":"1015","type":"LinearScale"},{"attributes":{"line_alpha":0.2,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1042","type":"Line"},{"attributes":{"coordinates":null,"group":null,"text":"Consommation"},"id":"1007","type":"Title"},{"attributes":{},"id":"1051","type":"AllLabels"},{"attributes":{"line_alpha":0.6,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1040","type":"Line"},{"attributes":{},"id":"1009","type":"DataRange1d"},{"attributes":{},"id":"1053","type":"BasicTickFormatter"},{"attributes":{},"id":"1018","type":"BasicTicker"},{"attributes":{"axis":{"id":"1017"},"coordinates":null,"group":null,"ticker":null},"id":"1020","type":"Grid"},{"attributes":{},"id":"1054","type":"AllLabels"},{"attributes":{},"id":"1013","type":"LinearScale"},{"attributes":{"axis_label":"Mois","coordinates":null,"formatter":{"id":"1053"},"group":null,"major_label_policy":{"id":"1054"},"ticker":{"id":"1018"}},"id":"1017","type":"LinearAxis"},{"attributes":{"coordinates":null,"data_source":{"id":"1005"},"glyph":{"id":"1040"},"group":null,"hover_glyph":null,"muted_glyph":{"id":"1042"},"nonselection_glyph":{"id":"1041"},"view":{"id":"1044"}},"id":"1043","type":"GlyphRenderer"},{"attributes":{"line_alpha":0.1,"line_color":"#1f77b4","line_width":3,"x":{"field":"x"},"y":{"field":"y"}},"id":"1041","type":"Line"},{"attributes":{},"id":"1026","type":"WheelZoomTool"},{"attributes":{"axis_label":"Consommation","coordinates":null,"formatter":{"id":"1050"},"group":null,"major_label_policy":{"id":"1051"},"ticker":{"id":"1022"}},"id":"1021","type":"LinearAxis"},{"attributes":{"axis":{"id":"1021"},"coordinates":null,"dimension":1,"group":null,"ticker":null},"id":"1024","type":"Grid"},{"attributes":{},"id":"1022","type":"BasicTicker"},{"attributes":{},"id":"1030","type":"HelpTool"},{"attributes":{},"id":"1025","type":"PanTool"},{"attributes":{},"id":"1055","type":"UnionRenderers"},{"attributes":{"overlay":{"id":"1031"}},"id":"1027","type":"BoxZoomTool"},{"attributes":{},"id":"1028","type":"SaveTool"},{"attributes":{},"id":"1029","type":"ResetTool"}],"root_ids":["1046"]},"title":"Bokeh Application","version":"2.4.3"}}
+    </script>
+    <script type="text/javascript">
+      (function() {
+        const fn = function() {
+          Bokeh.safely(function() {
+            (function(root) {
+              function embed_document(root) {
+              const docs_json = document.getElementById('1168').textContent;
+              const render_items = [{"docid":"b4872e11-d1db-4c6f-b4bc-6f3377898b88","root_ids":["1046"],"roots":{"1046":"9ce925f1-4e05-4078-af5f-12877c4b6c40"}}];
+              root.Bokeh.embed.embed_items(docs_json, render_items);
+              }
+              if (root.Bokeh !== undefined) {
+                embed_document(root);
+              } else {
+                let attempts = 0;
+                const timer = setInterval(function(root) {
+                  if (root.Bokeh !== undefined) {
+                    clearInterval(timer);
+                    embed_document(root);
+                  } else {
+                    attempts++;
+                    if (attempts > 100) {
+                      clearInterval(timer);
+                      console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                    }
+                  }
+                }, 10, root)
+              }
+            })(window);
+          });
+        };
+        if (document.readyState != "loading") fn();
+        else document.addEventListener("DOMContentLoaded", fn);
+      })();
+    </script>
+  </body>
+</html>
